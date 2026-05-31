@@ -1,0 +1,14 @@
+.profile-container-100{
+    background-color:grey;
+    color:white;
+    border-style:solid;
+    border-width:0px;
+    border-radius:16px;
+    padding:4px;
+}
+.username-signed-100{
+    font-family:'Times New Roman', Times, serif;
+    background-color:transparent;
+    color:white;
+    font-size:24px;
+}

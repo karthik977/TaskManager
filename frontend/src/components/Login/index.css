@@ -1,0 +1,56 @@
+.task-manager-heading{
+    font-family:cursive;
+    font-size:24px;
+    color:brown;
+}
+.task-manager-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.login-username{
+    font-family:'Times New Roman', Times, serif;
+    font-size:14px;
+    color:black;
+}
+.btn-button{
+    border-radius:12px;
+    border:0px;
+    background-color:blue;
+    padding:6px;
+    color:white;
+    font-size:16px;
+}
+.login-container{
+    background-color:skyblue;
+    border-radius:20px;
+    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.user-input-style{
+    border-radius:8px;
+    padding:10px;
+    border-width:1px;
+    border-color:transparent;
+}
+.show-password{
+    margin-top:5px;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+.show-password-chk{
+    color:grey;
+    font-family:'Times New Roman', Times, serif;
+}
+.user-details-error-msg{
+    color:red;
+    font-size:14px;
+    
+}

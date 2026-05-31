@@ -1,0 +1,57 @@
+.bullet-container{
+    background: linear-gradient(
+  120deg,
+  #0f0c29,
+  #302b63,
+  #24243e
+);
+color:white;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+.bullet-points{
+    color:goldenrod;
+    font-family:cursive;
+    font-size:21px;
+}
+.bullet-input{
+    border-width:0px;
+    border-radius:15px;
+    height:40px;
+    width:500px;
+}
+.add-bullet-btn{
+    background-color:skyblue;
+    border-width:0px;
+    border-radius:15px;
+    padding:10px;
+    color:white;
+}
+.bullet-input-container{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start
+}
+.bullets-to-show-ordered-list{
+    background-color:white;
+    border-radius:15px;
+    padding:10px;
+    border-style:solid;
+}
+
+.bullet-item{
+    font-family:'Times New Roman', Times, serif;
+    font-size:19px;
+    color:gray;
+
+}
+
+.back-btn-container{
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    width:40%
+}

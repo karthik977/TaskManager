@@ -1,0 +1,136 @@
+.header-bar{
+   display:flex;
+   flex-direction:row;
+   justify-content:space-between;
+   align-items:center;
+}
+.Task-home{
+    font-family:cursive;
+    font-size:19px;
+    color:orange;
+}
+.home-container-1{
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    padding:4px;
+    max-width:100vw;
+    min-height:100vh;
+}
+.delete-task-btn{
+    background-color:red;
+    color:white;
+    padding:6px;
+    border-width:0px;
+    border-radius:8px;
+    font-size:12px;
+}
+.add-task-btn{
+    background-color:lightgreen;
+    color:white;
+    padding:6px;
+    border-width:0px;
+    border-radius:8px;
+    font-size:12px;
+}
+.task-container-for-task{
+    background: #1e293b;
+    color: #f8fafc;
+    width:80vw;
+    border-style:solid;
+    border-color:transparent;
+    border-width:0px;
+    border-radius:16px;
+    margin-top:8px;
+    padding:10px;
+}
+
+.taskkk{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.textarea-description{
+    width:100%;
+    height:100px    ;
+    border-radius:10px;
+    border-width:0px;
+    border-color:transparent;
+    margin-top:6px;
+}
+.input-title{
+    border-width:0px;
+    border-color:transparent;
+    border-radius:6px;
+    height:25px;
+    width:250px;
+}
+.user-todo-task-container{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.todo-todos{
+    width:100%
+}
+.logout-btn{
+    background-color:blue;
+    color:white;
+    padding:8px;
+    border-width:0px;
+    border-radius:10px;
+    font-size:12px;
+}
+.top-head{
+    position:sticky;
+}
+.profile-btn-home{
+    background-color:transparent;
+    border-width:0px;
+}
+.profile-checkers{
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items:center;
+}
+.profile-component-home{
+    background-color:skyblue;
+    border-style:solid;
+    border-radius:6px;
+    color:white;
+}
+.sub-header-home{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    width:80%;
+}
+.update-task-btn{
+    border-width:0px;
+     padding:6px;
+    border-width:0px;
+    border-radius:8px;
+    font-size:12px;
+    margin-left:4px;
+    background-color:yellow;
+    color:white
+}
+.profile-react-icon{
+    font-size:24px;
+    color:white;
+}
+.sub-header-home{
+    width:40%;
+}
+.bullet-btn{
+    background-color:transparent;
+    border-width:0px;
+}
+.error-message-add-task{
+   color:red;
+}
