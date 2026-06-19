@@ -31,7 +31,7 @@ function Home() {
 
     useEffect(()=>{
         getTasks()
-    },[])
+    },[getTasks])
 
     const addTask = async () => {
         if(title !== "" && description !== ""){

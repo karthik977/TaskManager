@@ -10,7 +10,7 @@ function Bullets() {
 
     useEffect(()=>{
        getTotalBullets()
-    },[])
+    },[getTotalBullets])
 
     const getTotalBullets = async () =>{
         const response = await fetch("https://taskmanager-backend-project.onrender.com/get-bullet",{

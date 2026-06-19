@@ -20,7 +20,7 @@ const Profile = () =>{
    }
    useEffect(()=>{
     getProfileDetails()
-   },[])
+   },[getProfileDetails])
 
     return(
         <div className="profile-container-100">
