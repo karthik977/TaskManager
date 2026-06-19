@@ -9,6 +9,7 @@ function Bullets() {
     const jwtToken = Cookies.get("jwtToken")
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
     useEffect(()=>{
        getTotalBullets()
     },[])

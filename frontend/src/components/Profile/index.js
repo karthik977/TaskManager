@@ -19,6 +19,7 @@ const Profile = () =>{
        setSignedUsername(data.username);
    }
    // eslint-disable-next-line react-hooks/exhaustive-deps
+   // eslint-disable-next-line
    useEffect(()=>{
     getProfileDetails()
    },[])
