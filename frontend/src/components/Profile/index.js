@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useCallback} from 'react'
 import Cookies from 'js-cookie'
 
 import './index.css'
@@ -7,7 +7,7 @@ import './index.css'
 const Profile = () =>{
    const [signedUsername,setSignedUsername] = useState("")
    const jwtToken1 = Cookies.get("jwtToken")
-   const getProfileDetails = async () =>{
+   const getProfileDetails = useCallback(async () =>{
        const profileResponse = await fetch("https://taskmanager-backend-project.onrender.com/profile",{
         method:'GET',
         headers:{
@@ -17,7 +17,7 @@ const Profile = () =>{
        const data = await profileResponse.json()
 
        setSignedUsername(data.username);
-   }
+   })
    // eslint-disable-next-line react-hooks/exhaustive-deps
    // eslint-disable-next-line
    useEffect(()=>{

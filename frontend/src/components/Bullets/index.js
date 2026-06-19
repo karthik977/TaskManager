@@ -1,4 +1,4 @@
-import {useState,useEffect} from 'react'
+import {useState,useCallback,useEffect} from 'react'
 import { FcEmptyTrash } from "react-icons/fc";
 import './index.css' 
 import Cookies from 'js-cookie'
@@ -12,9 +12,9 @@ function Bullets() {
     // eslint-disable-next-line
     useEffect(()=>{
        getTotalBullets()
-    },[])
+    },[getTotalBullets])
 
-    const getTotalBullets = async () =>{
+    const getTotalBullets = useCallback(async () =>{
         const response = await fetch("https://taskmanager-backend-project.onrender.com/get-bullet",{
              method:"GET",
             headers:{
@@ -24,7 +24,7 @@ function Bullets() {
 
         const bulletData = await response.json()
         setTotalBullets(bulletData)
-    }
+    })
     const addBullet = async() =>{
          const bulletDetails = {titles:bullet} 
          await fetch("https://taskmanager-backend-project.onrender.com/bullet",{

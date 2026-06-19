@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import { CgProfile } from "react-icons/cg";
 import { BiSolidMinusCircle } from "react-icons/bi";
 import { GiSilverBullet } from "react-icons/gi";
@@ -18,7 +18,7 @@ function Home() {
     
     const Navigate = useNavigate()
 
-    const getTasks = async () => {
+    const getTasks = useCallback(async () => {
         const response = await fetch("https://taskmanager-backend-project.onrender.com/tasks",{
             method:"GET",
             headers:{
@@ -27,13 +27,13 @@ function Home() {
         })
         const data = await response.json()
         setTasks(data)
-    }
+    })
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // eslint-disable-next-line
     useEffect(()=>{
         getTasks()
-    },[])
+    },[getTasks])
 
     const addTask = async () => {
         if(title !== "" && description !== ""){
