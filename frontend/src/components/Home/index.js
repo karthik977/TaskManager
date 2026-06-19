@@ -19,7 +19,7 @@ function Home() {
     const Navigate = useNavigate()
 
     const getTasks = async () => {
-        const response = await fetch("http://localhost:5000/tasks",{
+        const response = await fetch("https://taskmanager-backend-project.onrender.com/tasks",{
             method:"GET",
             headers:{
                 Authorization:`Bearer ${jwtToken}`
@@ -39,7 +39,7 @@ function Home() {
             title,
             description
         }
-        await fetch("http://localhost:5000/add-task",{
+        await fetch("https://taskmanager-backend-project.onrender.com/add-task",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -59,7 +59,7 @@ function Home() {
     }
 
     const deleteTask = async (id) => {
-        await fetch(`http://localhost:5000/delete-task/${id}`,{
+        await fetch(`https://taskmanager-backend-project.onrender.com/delete-task/${id}`,{
             method:"DELETE",
             headers:{
                 Authorization:`Bearer ${jwtToken}`
@@ -73,7 +73,7 @@ function Home() {
             title,
             description
         }
-        await fetch(`http://localhost:5000/update-task/${id}`,{
+        await fetch(`https://taskmanager-backend-project.onrender.com/update-task/${id}`,{
             method:'PUT',
             headers:{
                 "Content-Type":"application/json",
@@ -143,7 +143,10 @@ function Home() {
             </button>
             <p className="error-message-add-task">{errorMessage}</p>
             <div>
-            <div className="taskkk">{
+            <div className="taskkk">
+                {tasks.length === 0 ? <div className="task-empty-container">
+                    <h1 className="task-container-heading">No Tasks Found</h1> </div>: 
+            
                 tasks.map((eachTask)=>(
 
                     <div className="task-container-for-task" key={eachTask.id}>
@@ -162,6 +165,8 @@ function Home() {
 
                 ))
             }
+
+
             </div>
             </div>
 

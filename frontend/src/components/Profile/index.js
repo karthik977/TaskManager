@@ -8,7 +8,7 @@ const Profile = () =>{
    const [signedUsername,setSignedUsername] = useState("")
    const jwtToken1 = Cookies.get("jwtToken")
    const getProfileDetails = async () =>{
-       const profileResponse = await fetch("http://localhost:5000/profile",{
+       const profileResponse = await fetch("https://taskmanager-backend-project.onrender.com/profile",{
         method:'GET',
         headers:{
             Authorization: `Bearer ${jwtToken1}`
@@ -24,7 +24,7 @@ const Profile = () =>{
 
     return(
         <div className="profile-container-100">
-           <p className="username-signed-100">Hey! {signedUsername} Welcome</p>
+           <p className="username-signed-100">Hey! <span className="highlighted-name">{signedUsername}</span> Welcome</p>
         </div>
     )
 }

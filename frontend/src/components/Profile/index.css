@@ -12,3 +12,8 @@
     color:white;
     font-size:24px;
 }
+.highlighted-name{
+    color:blue;
+    font-weight:bold;
+    font-family:cursive;
+}
