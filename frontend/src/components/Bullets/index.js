@@ -1,76 +1,102 @@
-import {useState,useCallback,useEffect} from 'react'
+import { useState, useEffect, useCallback } from "react";
 import { FcEmptyTrash } from "react-icons/fc";
-import './index.css' 
-import Cookies from 'js-cookie'
+import "./index.css";
+import Cookies from "js-cookie";
 
 function Bullets() {
-    const [bullet,setBullet] = useState("")
-    const [totalBullets,setTotalBullets] = useState([])
-    const jwtToken = Cookies.get("jwtToken")
+    const [bullet, setBullet] = useState("");
+    const [totalBullets, setTotalBullets] = useState([]);
+    const jwtToken = Cookies.get("jwtToken");
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // eslint-disable-next-line
-    useEffect(()=>{
-       getTotalBullets()
-    },[getTotalBullets])
-
-    const getTotalBullets = useCallback(async () =>{
-        const response = await fetch("https://taskmanager-backend-project.onrender.com/get-bullet",{
-             method:"GET",
-            headers:{
-                Authorization:`Bearer ${jwtToken}`
+    // Define this BEFORE useEffect
+    const getTotalBullets = useCallback(async () => {
+        const response = await fetch(
+            "https://taskmanager-backend-project.onrender.com/get-bullet",
+            {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`,
+                },
             }
-        })
+        );
 
-        const bulletData = await response.json()
-        setTotalBullets(bulletData)
-    })
-    const addBullet = async() =>{
-         const bulletDetails = {titles:bullet} 
-         await fetch("https://taskmanager-backend-project.onrender.com/bullet",{
-            method:'POST',
-            headers:{
-                "Content-Type":"application/json",
-                Authorization:`Bearer ${jwtToken}`
-            },
-            body:JSON.stringify(bulletDetails)
-         })
-         setBullet("")
-         getTotalBullets()
+        const bulletData = await response.json();
+        setTotalBullets(bulletData);
+    }, [jwtToken]);
 
+    useEffect(() => {
+        getTotalBullets();
+    }, [getTotalBullets]);
 
-    }
+    const addBullet = async () => {
+        const bulletDetails = { titles: bullet };
 
-    const changeAddBullet = (event) =>{
-        setBullet(event.target.value)
-    }
+        await fetch(
+            "https://taskmanager-backend-project.onrender.com/bullet",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${jwtToken}`,
+                },
+                body: JSON.stringify(bulletDetails),
+            }
+        );
 
-    const backHome = ()=>{
-        window.location.replace("/home")
-    }
-   return (
+        setBullet("");
+        getTotalBullets();
+    };
 
-    <div className="bullet-container">
-        <p className="bullet-points">Bullet Points</p>
-        <div className="bullet-input-container">
-        <input type="text" onChange={changeAddBullet} placeholder="Unable to remember short point make note here..." className="bullet-input" />
-        <br />
-        <button className="add-bullet-btn" onClick={addBullet}>Add Bullet</button>
+    const changeAddBullet = (event) => {
+        setBullet(event.target.value);
+    };
+
+    const backHome = () => {
+        window.location.replace("/home");
+    };
+
+    return (
+        <div className="bullet-container">
+            <p className="bullet-points">Bullet Points</p>
+
+            <div className="bullet-input-container">
+                <input
+                    type="text"
+                    value={bullet}
+                    onChange={changeAddBullet}
+                    placeholder="Unable to remember short point make note here..."
+                    className="bullet-input"
+                />
+
+                <br />
+
+                <button className="add-bullet-btn" onClick={addBullet}>
+                    Add Bullet
+                </button>
+            </div>
+
+            {totalBullets.length === 0 ? (
+                <div className="empty-bullet-container">
+                    <FcEmptyTrash className="empty-bin" />
+                    <h1 className="bullet-points">No Bullet Points Found</h1>
+                </div>
+            ) : (
+                <div className="bullets-to-show-ordered-list">
+                    {totalBullets.map((eachBullet) => (
+                        <p key={eachBullet.id} className="bullet-item">
+                            {eachBullet.titles}
+                        </p>
+                    ))}
+                </div>
+            )}
+
+            <div className="back-btn-container">
+                <button className="add-bullet-btn" onClick={backHome}>
+                    Back
+                </button>
+            </div>
         </div>
-        {totalBullets.length === 0 ? <div className="empty-bullet-container">
-            <FcEmptyTrash  className="empty-bin" />
-            <h1 className="bullet-points">No Bullets Points Found</h1>
-        </div>
-            : <div className="bullets-to-show-ordered-list">
-           {totalBullets.map((eachBullet) =>(<p className="bullet-item">{eachBullet.titles}</p>)
-           )}
-        </div> }
-        
-        <div className="back-btn-container">
-        <button className="add-bullet-btn" onClick={backHome}>Back</button>
-        </div>
-    </div>
-   )
+    );
 }
 
-export default Bullets
+export default Bullets;

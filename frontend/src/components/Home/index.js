@@ -19,18 +19,18 @@ function Home() {
     const Navigate = useNavigate()
 
     const getTasks = useCallback(async () => {
-        const response = await fetch("https://taskmanager-backend-project.onrender.com/tasks",{
-            method:"GET",
-            headers:{
-                Authorization:`Bearer ${jwtToken}`
-            }
-        })
-        const data = await response.json()
-        setTasks(data)
-    })
+    const response = await fetch("https://taskmanager-backend-project.onrender.com/tasks", {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${jwtToken}`,
+        },
+    });
+
+    const data = await response.json();
+    setTasks(data);
+}, [jwtToken]);
     
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // eslint-disable-next-line
+    
     useEffect(()=>{
         getTasks()
     },[getTasks])
