@@ -8,9 +8,10 @@ function Bullets() {
     const [totalBullets,setTotalBullets] = useState([])
     const jwtToken = Cookies.get("jwtToken")
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
        getTotalBullets()
-    },[getTotalBullets])
+    },[])
 
     const getTotalBullets = async () =>{
         const response = await fetch("https://taskmanager-backend-project.onrender.com/get-bullet",{

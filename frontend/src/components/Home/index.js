@@ -28,10 +28,11 @@ function Home() {
         const data = await response.json()
         setTasks(data)
     }
-
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(()=>{
         getTasks()
-    },[getTasks])
+    },[])
 
     const addTask = async () => {
         if(title !== "" && description !== ""){
