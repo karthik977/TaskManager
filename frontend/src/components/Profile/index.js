@@ -6,21 +6,30 @@ const Profile = () => {
   const [signedUsername, setSignedUsername] = useState("");
   const jwtToken1 = Cookies.get("jwtToken");
 
+  // 1. Wrapped in useCallback with dependencies included correctly
   const getProfileDetails = useCallback(async () => {
-    const profileResponse = await fetch(
-      "https://taskmanager-backend-project.onrender.com/profile",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${jwtToken1}`,
-        },
-      }
-    );
+    try {
+      const profileResponse = await fetch(
+        "https://taskmanager-backend-project.onrender.com/profile",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${jwtToken1}`,
+          },
+        }
+      );
 
-    const data = await profileResponse.json();
-    setSignedUsername(data.username);
+      if (profileResponse.ok) {
+        const data = await profileResponse.json();
+        // Fallback to a default string if username isn't available
+        setSignedUsername(data.username || "User");
+      }
+    } catch (error) {
+      console.error("Failed to fetch profile details:", error);
+    }
   }, [jwtToken1]);  
 
+  // 2. Safe execution on component mount and function stabilization
   useEffect(() => {
     getProfileDetails();
   }, [getProfileDetails]);
